@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   #deviseコントローラーにストロングパラメータを追加
-  efore_action :configure_permitted_parameters , if: :devise_controller?
+  before_action :configure_permitted_parameters , if: :devise_controller?
 
   protected 
   #クラスの外からは呼び出せない。同じインスタンス内で呼び出せる。他のインスタンスでも同じクラスやサブクラスであれば呼び出せる。
