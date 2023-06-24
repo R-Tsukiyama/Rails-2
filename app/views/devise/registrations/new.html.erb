@@ -4,36 +4,34 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :username, "名前" %><br />
+    <%= f.label :username, "名前" %><br>
     <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
   </div>
 
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, "メールアドレス" %><br>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <%= f.label :password, "パスワード(6文字以上)" %><br>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "パスワード（確認用）" %><br>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field" >
-    <%= f.label :image, "プロフィール画像" %><br />
+    <%= f.label :image, "プロフィール画像" %><br>
     <%= f.file_field :image %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "アカウントを作成", class: "btn-signup" %><br>
+    <%= link_to "アカウントをお持ちの場合はログイン", new_user_session_path, class: "btn-login" %>
   </div>
 <% end %>
 
