@@ -14,8 +14,38 @@
 
   <body>
     <header>
-      
+      <%= link_to"Potepan Share", root_path, class: "header-logo" %>
+      <% if user_signed_in? %> 
+        <div class="dropdown">
+          <button class="btn-dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <% if current_user.image.attached? %>
+              <%= image_tag current_user.avatar, class:"avatar" %>
+            <% else %>
+              <%= image_tag('default-image.png', class: "icon-image-circle") %>
+            <% end %>
+              <%= current_user.name %>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <%= link_to "施設の新規登録", new_room_path, class: "dropdown-item" %>
+            <%= link_to "予約済み一覧", reservations_path, class: "dropdown-item" %>
+            <%= link_to "登録済み一覧", rooms_own_path, class: "dropdown-item" %>
+            <%= link_to "アカウント情報", users_path, class: "dropdown-item" %>
+            <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item" %> 
+          </div>
+        </div>
+     <% else %>
+       <div>
+         <%= link_to"ログイン", new_user_session_path, class: "btn btn-secondary" %>
+         <%= link_to"新規登録", new_user_registration_path, class: "btn btn-primary" %>
+       </div>
+     <% end %>
     </header>
+
+    <div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+
     <%= yield %>
   </body>
 </html>
